@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Docs - History Essay Draft</title>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; font-family: Arial, sans-serif; background-color: #f9fbfd; overflow: hidden; }
+        #school-overlay { display: flex; flex-direction: column; width: 100%; height: 100%; }
+        #toolbar { background-color: #fff; border-bottom: 1px solid #dadce0; padding: 8px 16px; display: flex; align-items: center; justify-content: space-between; }
+        .doc-title { font-size: 18px; color: #3c4043; font-weight: bold; }
+        .timer-box { font-size: 14px; font-weight: bold; color: #5f6368; background: #e8eaed; padding: 6px 12px; border-radius: 4px; }
+        #document-body { flex-grow: 1; padding: 40px; display: flex; justify-content: center; background-color: #f1f3f4; overflow-y: auto; }
+        .paper { background: white; width: 100%; max-width: 800px; min-height: 1000px; padding: 50px; box-shadow: 0 1px 3px rgba(60,64,67,0.3); box-sizing: border-box; color: #202124; line-height: 1.6; }
+        #stem-frame { display: none; width: 100%; height: 100%; border: none; position: absolute; top: 0; left: 0; z-index: 10; }
+        #lock-screen { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #202124; color: white; display: none; flex-direction: column; justify-content: center; align-items: center; z-index: 20; font-family: sans-serif; }
+    </style>
+</head>
+<body>
+
+    <!-- Cloaked School Work Layer -->
+    <div id="school-overlay">
+        <div id="toolbar">
+            <div class="doc-title">📝 STEM Independent Technology Study - Web Engine Analysis</div>
+            <div id="timerDisplay" class="timer-box">Time Remaining: 10:00</div>
+        </div>
+        <div id="document-body">
+            <div class="paper">
+                <h2>Independent Study: Network Asset Delivery Frameworks</h2>
+                <p><strong>Student Objective:</strong> To evaluate how modern web environments interpret and render compiled WebAssembly (WASM) packages within low-bandwidth local area networks.</p>
+                <p>This report documents the containerization of virtual matrix generation models. The automated environment relies on client-side rendering structures rather than resource-heavy cloud servers, ensuring strict network efficiency benchmarks are maintained throughout the evaluation period.</p>
+                <p><em>Instructions: Press the 'P' key to initialize the WASM runtime sandbox interface for real-time logic verification.</em></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden Game Framework -->
+    <!-- Points to an open-source web engine wrapper. For a true 20w14infinite web experience, you would compile the snapshot jar using CheerpJ or download an Eaglercraft file repo into this repository -->
+    <iframe id="stem-frame" src="https://minecraft.net"></iframe>
+
+    <!-- STEM Safe Timer Lock Screen -->
+    <div id="lock-screen">
+        <h1>Evaluation Session Complete</h1>
+        <p>Your 10-minute independent study framework sandbox has locked.</p>
+        <p>Please return to standard coursework instructions.</p>
+    </div>
+
+    <script>
+        let countdownTime = 600; // 10 minutes in seconds
+        const timerElement = document.getElementById('timerDisplay');
+        const gameFrame = document.getElementById('stem-frame');
+        const lockScreen = document.getElementById('lock-screen');
+        let sessionStarted = false;
+
+        // Listen for the secret activation key 'P' (for Project/Play)
+        window.addEventListener('keydown', (e) => {
+            if (e.key.toLowerCase() === 'p' && !sessionStarted) {
+                gameFrame.style.display = 'block';
+                sessionStarted = true;
+                startTimer();
+            }
+        });
+
+        function startTimer() {
+            const interval = setInterval(() => {
+                let minutes = Math.floor(countdownTime / 60);
+                let seconds = countdownTime % 60;
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+                
+                timerElement.textContent = `Time Remaining: ${minutes}:${seconds}`;
+                
+                if (countdownTime <= 0) {
+                    clearInterval(interval);
+                    gameFrame.style.display = 'none';
+                    lockScreen.style.display = 'flex';
+                }
+                countdownTime--;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
