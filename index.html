@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Docs - School Project</title>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; font-family: Arial, sans-serif; background-color: #f9fbfd; overflow: hidden; }
+        #school-overlay { display: flex; flex-direction: column; width: 100%; height: 100%; }
+        #toolbar { background-color: #fff; border-bottom: 1px solid #dadce0; padding: 8px 16px; display: flex; align-items: center; justify-content: space-between; }
+        .doc-title { font-size: 16px; color: #3c4043; font-weight: bold; }
+        .timer-box { font-size: 14px; font-weight: bold; color: #5f6368; background: #e8eaed; padding: 6px 12px; border-radius: 4px; }
+        #document-body { flex-grow: 1; padding: 20px; display: flex; justify-content: center; background-color: #f1f3f4; overflow-y: auto; }
+        .paper { background: white; width: 100%; max-width: 800px; min-height: 600px; padding: 30px; box-shadow: 0 1px 3px rgba(60,64,67,0.3); box-sizing: border-box; color: #202124; line-height: 1.6; }
+        #stem-frame { display: none; width: 100%; height: 100%; border: none; position: absolute; top: 0; left: 0; z-index: 10; }
+        #mobile-btn { position: absolute; bottom: 20px; right: 20px; background: #1a73e8; color: white; border: none; padding: 12px 24px; border-radius: 4px; font-weight: bold; z-index: 5; font-size: 16px; }
+    </style>
+</head>
+<body>
+
+    <div id="school-overlay">
+        <div id="toolbar">
+            <div class="doc-title">📝 STEM Technology Study - Web Content Delivery</div>
+            <div id="timerDisplay" class="timer-box">Time Remaining: 10:00</div>
+        </div>
+        <div id="document-body">
+            <div class="paper">
+                <h2>Independent Study: Client-Side Sandbox Environments</h2>
+                <p>This module analyzes web data streams. Tap the action button below to run the simulation test container.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile-Friendly Activation Button -->
+    <button id="mobile-btn" onclick="launchSandbox()">Launch Test</button>
+
+    <!-- Hidden Eaglercraft Web Instance -->
+    <iframe id="stem-frame" src="https://eaglercraft.com"></iframe>
+
+    <script>
+        let countdownTime = 600;
+        const timerElement = document.getElementById('timerDisplay');
+        const gameFrame = document.getElementById('stem-frame');
+        const btn = document.getElementById('mobile-btn');
+
+        function launchSandbox() {
+            gameFrame.style.display = 'block';
+            btn.style.display = 'none';
+            startTimer();
+        }
+
+        function startTimer() {
+            const interval = setInterval(() => {
+                let minutes = Math.floor(countdownTime / 60);
+                let seconds = countdownTime % 60;
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+                timerElement.textContent = `Time Remaining: ${minutes}:${seconds}`;
+                if (countdownTime <= 0) {
+                    clearInterval(interval);
+                    gameFrame.style.display = 'none';
+                    alert("Session complete. Return to standard coursework.");
+                }
+                countdownTime--;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
